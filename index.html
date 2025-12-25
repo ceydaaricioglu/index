@@ -1,63 +1,103 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="tr">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2575.7">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Performance Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .chart-container { position: relative; height: 350px; width: 100%; }
+        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+    </style>
 </head>
-<body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html lang="tr"&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;Hotel SEO Dashboard&lt;/title&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.jsdelivr.net/npm/chart.js"&gt;&lt;/script&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>.card-shadow { box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05); }</p>
-<p class="p1"><span class="Apple-converted-space">        </span>select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%236b7280'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 0.75rem center; background-size: 1rem; }</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p1">&lt;body class="bg-[#f8fafc] text-slate-800 antialiased"&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="max-w-7xl mx-auto px-4 py-10"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-6"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h1 class="text-4xl font-black text-slate-900 tracking-tight"&gt;Analytics Dashboard&lt;/h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="text-slate-500 mt-1 font-medium"&gt;Search Console Performans Verileri&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="relative w-full md:w-80"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;select id="hotelSelector" onchange="renderDashboard()" class="w-full p-4 bg-white border border-slate-200 rounded-2xl shadow-sm focus:ring-2 focus:ring-indigo-500 outline-none font-bold text-slate-700 cursor-pointer transition-all"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;option value="dmaris"&gt;D Maris Bay&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;option value="argos"&gt;Argos in Cappadocia&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;option value="dgocek"&gt;D-Resort Göcek&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;option value="dayvalik"&gt;D-Resort Ayvalık&lt;/option&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/select&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="bg-white p-6 rounded-3xl card-shadow border border-slate-100"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="text-xs font-bold text-indigo-500 uppercase tracking-wider"&gt;Toplam Tıklama&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3 id="statClicks" class="text-3xl font-black mt-2 text-slate-900"&gt;-&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="bg-white p-6 rounded-3xl card-shadow border border-slate-100"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="text-xs font-bold text-blue-500 uppercase tracking-wider"&gt;Toplam Gösterim&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3 id="statImpressions" class="text-3xl font-black mt-2 text-slate-900"&gt;-&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="bg-white p-6 rounded-3xl card-shadow border border-slate-100"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="text-xs font-bold text-emerald-500 uppercase tracking-wider"&gt;Ortalama CTR&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h3 id="statCTR" class="text-3xl font-black mt-2 text-slate-900"&gt;-&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="bg-white p-6 rounded-3xl card-shadow border border-slate-100"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="text-xs font-bold text-orange-500 uppercase tracking-wider"&gt;Ort. Pozisyon&lt;/p&gt;</p>
-</body>
-</html>
+<body class="bg-gray-100 min-h-screen pb-12">
+
+    <header class="gradient-bg text-white py-12 px-6 shadow-lg mb-8">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div>
+                <h1 class="text-4xl font-extrabold tracking-tight">Otel Performans Analizi</h1>
+                <p class="mt-2 text-indigo-100 opacity-90 text-lg">Tüm Search Console Verileri (2024-2025)</p>
+            </div>
+            <div class="flex items-center gap-3 bg-white/10 p-2 rounded-2xl backdrop-blur-md border border-white/20">
+                <span class="pl-4 font-semibold">Otel Seçin:</span>
+                <select id="hotelSelect" onchange="updateCharts()" class="bg-white text-gray-900 px-6 py-3 rounded-xl font-bold border-none outline-none ring-0 shadow-lg cursor-pointer">
+                    <option value="dmaris">D Maris Bay</option>
+                    <option value="argos">Argos in Cappadocia</option>
+                    <option value="dgocek">D-Resort Göcek</option>
+                    <option value="dayvalik">D-Resort Ayvalık</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+            <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-200">
+                <p class="text-xs font-bold text-gray-400 uppercase">Top. Tıklama</p>
+                <p id="totalClicks" class="text-3xl font-black text-indigo-600 mt-1">-</p>
+            </div>
+            <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-200">
+                <p class="text-xs font-bold text-gray-400 uppercase">Top. Gösterim</p>
+                <p id="totalImps" class="text-3xl font-black text-gray-800 mt-1">-</p>
+            </div>
+            <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-200">
+                <p class="text-xs font-bold text-gray-400 uppercase">Ort. CTR</p>
+                <p id="avgCTR" class="text-3xl font-black text-emerald-500 mt-1">-</p>
+            </div>
+            <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-200">
+                <p class="text-xs font-bold text-gray-400 uppercase">Ort. Pozisyon</p>
+                <p id="avgPos" class="text-3xl font-black text-orange-500 mt-1">-</p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
+            <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-gray-200">
+                <h3 class="text-xl font-bold mb-6 flex items-center gap-2 text-gray-800">Tıklama ve Gösterim</h3>
+                <div class="chart-container">
+                    <canvas id="lineChart"></canvas>
+                </div>
+            </div>
+            <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-gray-200">
+                <h3 class="text-xl font-bold mb-6 flex items-center gap-2 text-gray-800">CTR Performansı (%)</h3>
+                <div class="chart-container">
+                    <canvas id="barChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-[2rem] shadow-sm border border-gray-200 overflow-hidden">
+            <div class="p-8 border-b border-gray-100 flex justify-between items-center bg-gray-50/50">
+                <h3 class="text-xl font-bold text-gray-800 uppercase tracking-tight">Aylık Detay Listesi</h3>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left">
+                    <thead class="bg-gray-100 text-gray-500 text-xs font-bold uppercase">
+                        <tr>
+                            <th class="px-8 py-5">Tarih</th>
+                            <th class="px-8 py-5">Tıklama</th>
+                            <th class="px-8 py-5">Gösterim</th>
+                            <th class="px-8 py-5">CTR</th>
+                            <th class="px-8 py-5">Pozisyon</th>
+                        </tr>
+                    </thead>
+                    <tbody id="dataTable" class="divide-y divide-gray-100">
+                        </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const dataSet = {
+            dmaris: {
+                labels: ['Eyl 24', 'Eki 24', 'Kas 24', 'Ara 24', 'Oca 25', 'Şub 25', 'Mar 25', 'Nis 25', 'May 25', 'Haz 25', 'Tem 25', 'Ağu 25', 'Eyl 25', 'Eki 25', 'Kas 25', 'Ara 25'],
+                clicks: [9005, 5585, 2600, 2542, 4492, 4756, 6549, 7454, 11351, 14475, 15103, 14561, 10383, 4646, 2572, 1346],
+                imps: [194184, 163849, 130145, 116778, 117188, 101693, 133844, 160081, 360531, 425405, 303790, 278538, 226123, 83303, 75005, 37326],
+                ctr: [4.6, 3.4, 2.0, 2.2, 3.8, 4.7, 4.9, 4.7, 3.1, 3.4, 5.0, 5.2, 4.6, 5.6, 3.4, 3.6],
+                pos: [17.3, 26.0, 31.1, 29.6, 19.0, 16.6, 15.8, 14.8, 30.0, 28.5, 9.3, 9.6, 7.1, 6.8, 8.8, 10.4]
+            },
+            argos: {
+                labels: ['Eyl 24', 'Eki 24', 'Kas 24', 'Ara 24', 'Oca 25
