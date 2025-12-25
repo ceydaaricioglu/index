@@ -3,27 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hotel Performance Dashboard</title>
+    <title>Hotel SEO Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        .chart-container { position: relative; height: 350px; width: 100%; }
-        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .stat-card { transition: transform 0.2s; }
+        .stat-card:hover { transform: translateY(-5px); }
     </style>
 </head>
-<body class="bg-gray-100 min-h-screen pb-12">
+<body class="bg-slate-50 text-slate-900">
 
-    <header class="gradient-bg text-white py-12 px-6 shadow-lg mb-8">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+    <div class="max-w-7xl mx-auto px-4 py-10">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-6">
             <div>
-                <h1 class="text-4xl font-extrabold tracking-tight">Otel Performans Analizi</h1>
-                <p class="mt-2 text-indigo-100 opacity-90 text-lg">Tüm Search Console Verileri (2024-2025)</p>
+                <h1 class="text-4xl font-extrabold text-slate-900 tracking-tight">Performance Overview</h1>
+                <p class="text-slate-500 mt-2 font-medium text-lg">Search Console Data Analytics</p>
             </div>
-            <div class="flex items-center gap-3 bg-white/10 p-2 rounded-2xl backdrop-blur-md border border-white/20">
-                <span class="pl-4 font-semibold">Otel Seçin:</span>
-                <select id="hotelSelect" onchange="updateCharts()" class="bg-white text-gray-900 px-6 py-3 rounded-xl font-bold border-none outline-none ring-0 shadow-lg cursor-pointer">
+            
+            <div class="w-full md:w-72">
+                <label class="block text-sm font-bold text-slate-400 uppercase mb-2 ml-1">Otel Seçimi</label>
+                <select id="hotelSelector" onchange="renderData()" class="w-full p-4 bg-white border border-slate-200 rounded-2xl shadow-xl shadow-slate-200/50 focus:ring-2 focus:ring-blue-500 outline-none font-bold text-slate-700 cursor-pointer transition-all appearance-none">
                     <option value="dmaris">D Maris Bay</option>
                     <option value="argos">Argos in Cappadocia</option>
                     <option value="dgocek">D-Resort Göcek</option>
@@ -31,73 +32,145 @@
                 </select>
             </div>
         </div>
-    </header>
 
-    <main class="max-w-6xl mx-auto px-6">
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
-            <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-200">
-                <p class="text-xs font-bold text-gray-400 uppercase">Top. Tıklama</p>
-                <p id="totalClicks" class="text-3xl font-black text-indigo-600 mt-1">-</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            <div class="stat-card bg-white p-8 rounded-3xl shadow-sm border border-slate-100">
+                <p class="text-xs font-black text-blue-500 uppercase tracking-widest">Tıklama</p>
+                <h3 id="totalClicks" class="text-3xl font-extrabold mt-3">-</h3>
             </div>
-            <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-200">
-                <p class="text-xs font-bold text-gray-400 uppercase">Top. Gösterim</p>
-                <p id="totalImps" class="text-3xl font-black text-gray-800 mt-1">-</p>
+            <div class="stat-card bg-white p-8 rounded-3xl shadow-sm border border-slate-100">
+                <p class="text-xs font-black text-indigo-500 uppercase tracking-widest">Gösterim</p>
+                <h3 id="totalImps" class="text-3xl font-extrabold mt-3 text-slate-800">-</h3>
             </div>
-            <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-200">
-                <p class="text-xs font-bold text-gray-400 uppercase">Ort. CTR</p>
-                <p id="avgCTR" class="text-3xl font-black text-emerald-500 mt-1">-</p>
+            <div class="stat-card bg-white p-8 rounded-3xl shadow-sm border border-slate-100">
+                <p class="text-xs font-black text-emerald-500 uppercase tracking-widest">Ort. CTR</p>
+                <h3 id="avgCTR" class="text-3xl font-extrabold mt-3 text-emerald-600">-</h3>
             </div>
-            <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-200">
-                <p class="text-xs font-bold text-gray-400 uppercase">Ort. Pozisyon</p>
-                <p id="avgPos" class="text-3xl font-black text-orange-500 mt-1">-</p>
+            <div class="stat-card bg-white p-8 rounded-3xl shadow-sm border border-slate-100">
+                <p class="text-xs font-black text-orange-500 uppercase tracking-widest">Ort. Pozisyon</p>
+                <h3 id="avgPos" class="text-3xl font-extrabold mt-3 text-orange-500">-</h3>
             </div>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
-            <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-gray-200">
-                <h3 class="text-xl font-bold mb-6 flex items-center gap-2 text-gray-800">Tıklama ve Gösterim</h3>
-                <div class="chart-container">
-                    <canvas id="lineChart"></canvas>
-                </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+            <div class="bg-white p-8 rounded-[2.5rem] shadow-sm border border-slate-100">
+                <h3 class="text-xl font-extrabold mb-8 text-slate-800">Traffic Trend</h3>
+                <canvas id="trafficChart" height="280"></canvas>
             </div>
-            <div class="bg-white p-8 rounded-[2rem] shadow-sm border border-gray-200">
-                <h3 class="text-xl font-bold mb-6 flex items-center gap-2 text-gray-800">CTR Performansı (%)</h3>
-                <div class="chart-container">
-                    <canvas id="barChart"></canvas>
-                </div>
+            <div class="bg-white p-8 rounded-[2.5rem] shadow-sm border border-slate-100">
+                <h3 class="text-xl font-extrabold mb-8 text-slate-800">CTR Performansı (%)</h3>
+                <canvas id="ctrChart" height="280"></canvas>
             </div>
         </div>
 
-        <div class="bg-white rounded-[2rem] shadow-sm border border-gray-200 overflow-hidden">
-            <div class="p-8 border-b border-gray-100 flex justify-between items-center bg-gray-50/50">
-                <h3 class="text-xl font-bold text-gray-800 uppercase tracking-tight">Aylık Detay Listesi</h3>
+        <div class="bg-white rounded-[2.5rem] shadow-sm border border-slate-100 overflow-hidden">
+            <div class="p-8 border-b border-slate-50 bg-slate-50/30">
+                <h3 class="text-xl font-extrabold text-slate-800">Aylık Detaylı Tablo</h3>
             </div>
             <div class="overflow-x-auto">
                 <table class="w-full text-left">
-                    <thead class="bg-gray-100 text-gray-500 text-xs font-bold uppercase">
-                        <tr>
-                            <th class="px-8 py-5">Tarih</th>
-                            <th class="px-8 py-5">Tıklama</th>
-                            <th class="px-8 py-5">Gösterim</th>
-                            <th class="px-8 py-5">CTR</th>
-                            <th class="px-8 py-5">Pozisyon</th>
+                    <thead>
+                        <tr class="text-slate-400 text-xs font-black uppercase tracking-widest bg-slate-50/50">
+                            <th class="p-6">Dönem</th>
+                            <th class="p-6">Tıklama</th>
+                            <th class="p-6">Gösterim</th>
+                            <th class="p-6">CTR (%)</th>
+                            <th class="p-6">Pozisyon</th>
                         </tr>
                     </thead>
-                    <tbody id="dataTable" class="divide-y divide-gray-100">
+                    <tbody id="tableBody" class="divide-y divide-slate-100 font-semibold text-slate-600">
                         </tbody>
                 </table>
             </div>
         </div>
-    </main>
+    </div>
 
     <script>
-        const dataSet = {
+        const hotelData = {
             dmaris: {
-                labels: ['Eyl 24', 'Eki 24', 'Kas 24', 'Ara 24', 'Oca 25', 'Şub 25', 'Mar 25', 'Nis 25', 'May 25', 'Haz 25', 'Tem 25', 'Ağu 25', 'Eyl 25', 'Eki 25', 'Kas 25', 'Ara 25'],
+                labels: ['Eylül 24', 'Ekim 24', 'Kasım 24', 'Aralık 24', 'Ocak 25', 'Şubat 25', 'Mart 25', 'Nisan 25', 'Mayıs 25', 'Haziran 25', 'Temmuz 25', 'Ağustos 25', 'Eylül 25', 'Ekim 25', 'Kasım 25', 'Aralık 25'],
                 clicks: [9005, 5585, 2600, 2542, 4492, 4756, 6549, 7454, 11351, 14475, 15103, 14561, 10383, 4646, 2572, 1346],
                 imps: [194184, 163849, 130145, 116778, 117188, 101693, 133844, 160081, 360531, 425405, 303790, 278538, 226123, 83303, 75005, 37326],
                 ctr: [4.6, 3.4, 2.0, 2.2, 3.8, 4.7, 4.9, 4.7, 3.1, 3.4, 5.0, 5.2, 4.6, 5.6, 3.4, 3.6],
                 pos: [17.3, 26.0, 31.1, 29.6, 19.0, 16.6, 15.8, 14.8, 30.0, 28.5, 9.3, 9.6, 7.1, 6.8, 8.8, 10.4]
             },
             argos: {
-                labels: ['Eyl 24', 'Eki 24', 'Kas 24', 'Ara 24', 'Oca 25
+                labels: ['Eylül 24', 'Ekim 24', 'Kasım 24', 'Aralık 24', 'Ocak 25', 'Şubat 25', 'Mart 25', 'Nisan 25', 'Mayıs 25', 'Haziran 25', 'Temmuz 25', 'Ağustos 25', 'Eylül 25', 'Ekim 25', 'Kasım 25', 'Aralık 25'],
+                clicks: [14000, 7400, 5800, 6000, 7200, 6700, 7100, 6400, 6300, 5200, 5600, 5900, 5800, 6000, 4900, 2800],
+                imps: [160100, 133700, 120400, 117500, 129800, 123400, 148400, 181000, 168500, 114900, 126200, 172100, 144000, 130400, 140400, 236800],
+                ctr: [8.7, 5.6, 4.8, 5.1, 5.5, 5.4, 4.8, 3.6, 3.7, 4.5, 4.4, 3.4, 4.0, 4.6, 3.5, 1.2],
+                pos: [15.0, 16.1, 17.7, 17.1, 13.8, 14.6, 13.7, 26.4, 22.2, 15.5, 14.1, 11.4, 9.5, 7.1, 7.1, 7.5]
+            },
+            dgocek: {
+                labels: ['Eylül 24', 'Ekim 24', 'Kasım 24', 'Aralık 24', 'Ocak 25', 'Şubat 25', 'Mart 25', 'Nisan 25', 'Mayıs 25', 'Haziran 25', 'Temmuz 25', 'Ağustos 25', 'Eylül 25', 'Ekim 25', 'Kasım 25', 'Aralık 25'],
+                clicks: [2559, 1826, 1011, 877, 1252, 1084, 2369, 2664, 3942, 5516, 6777, 5748, 3188, 1738, 849, 697],
+                imps: [65389, 51326, 34787, 31820, 32203, 31910, 56403, 66609, 94191, 137009, 172086, 170514, 93488, 45183, 43213, 27692],
+                ctr: [3.9, 3.5, 2.9, 2.7, 3.8, 3.4, 4.2, 4.0, 4.1, 4.0, 3.9, 3.3, 3.4, 3.8, 1.9, 2.5],
+                pos: [11.8, 16.9, 20.8, 20.1, 15.5, 15.6, 10.9, 9.4, 9.1, 7.9, 6.9, 7.9, 7.9, 6.4, 7.4, 10.3]
+            },
+            dayvalik: {
+                labels: ['Eylül 24', 'Ekim 24', 'Kasım 24', 'Aralık 24', 'Ocak 25', 'Şubat 25', 'Mart 25', 'Nisan 25', 'Mayıs 25', 'Haziran 25', 'Temmuz 25', 'Ağustos 25', 'Eylül 25', 'Ekim 25', 'Kasım 25', 'Aralık 25'],
+                clicks: [2285, 1023, 459, 572, 1044, 930, 1559, 1734, 3909, 6237, 8182, 6107, 2054, 924, 499, 471],
+                imps: [37901, 22266, 15138, 18312, 19551, 19769, 29108, 32973, 72720, 106366, 140213, 137980, 61731, 21017, 18484, 10910],
+                ctr: [6.0, 4.6, 3.0, 3.1, 5.3, 4.7, 5.4, 5.3, 5.4, 5.9, 5.8, 4.4, 3.3, 4.4, 2.7, 4.3],
+                pos: [8.7, 18.6, 26.8, 25.2, 14.9, 13.6, 12.4, 11.9, 7.7, 7.1, 6.7, 9.9, 7.8, 5.7, 9.4, 12.1]
+            }
+        };
+
+        let tChart, cChart;
+
+        function renderData() {
+            const key = document.getElementById('hotelSelector').value;
+            const data = hotelData[key];
+
+            // Update Metrics
+            document.getElementById('totalClicks').innerText = data.clicks.reduce((a, b) => a + b, 0).toLocaleString();
+            document.getElementById('totalImps').innerText = data.imps.reduce((a, b) => a + b, 0).toLocaleString();
+            document.getElementById('avgCTR').innerText = '%' + (data.ctr.reduce((a, b) => a + b, 0) / data.ctr.length).toFixed(2);
+            document.getElementById('avgPos').innerText = (data.pos.reduce((a, b) => a + b, 0) / data.pos.length).toFixed(1);
+
+            // Update Table
+            const tbody = document.getElementById('tableBody');
+            tbody.innerHTML = '';
+            data.labels.forEach((label, i) => {
+                tbody.innerHTML += `
+                    <tr class="hover:bg-slate-50 transition-colors">
+                        <td class="p-6 text-slate-900 font-bold">${label}</td>
+                        <td class="p-6 text-blue-600 font-bold">${data.clicks[i].toLocaleString()}</td>
+                        <td class="p-6">${data.imps[i].toLocaleString()}</td>
+                        <td class="p-6 text-emerald-600 font-bold">%${data.ctr[i]}</td>
+                        <td class="p-6 text-orange-500 font-bold">${data.pos[i]}</td>
+                    </tr>
+                `;
+            });
+
+            // Refresh Charts
+            if (tChart) tChart.destroy();
+            if (cChart) cChart.destroy();
+
+            tChart = new Chart(document.getElementById('trafficChart'), {
+                type: 'line',
+                data: {
+                    labels: data.labels,
+                    datasets: [
+                        { label: 'Tıklama', data: data.clicks, borderColor: '#3b82f6', backgroundColor: 'rgba(59, 130, 246, 0.1)', fill: true, tension: 0.4, yAxisID: 'y' },
+                        { label: 'Gösterim', data: data.imps, borderColor: '#94a3b8', borderDash: [5, 5], tension: 0.4, yAxisID: 'y1' }
+                    ]
+                },
+                options: { responsive: true, plugins: { legend: { position: 'bottom' } }, scales: { y: { position: 'left' }, y1: { position: 'right', grid: { display: false } } } }
+            });
+
+            cChart = new Chart(document.getElementById('ctrChart'), {
+                type: 'bar',
+                data: {
+                    labels: data.labels,
+                    datasets: [{ label: 'CTR %', data: data.ctr, backgroundColor: '#10b981', borderRadius: 12 }]
+                },
+                options: { responsive: true, plugins: { legend: { display: false } } }
+            });
+        }
+
+        window.onload = renderData;
+    </script>
+</body>
+</html>
