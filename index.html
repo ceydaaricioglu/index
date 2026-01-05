@@ -3,174 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hotel SEO Dashboard</title>
+    <title>İstanbul Airport ASO Dashboard | Türkiye 2025</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
-        .stat-card { transition: transform 0.2s; }
-        .stat-card:hover { transform: translateY(-5px); }
-    </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
-<body class="bg-slate-50 text-slate-900">
+<body class="bg-slate-50 font-sans">
 
-    <div class="max-w-7xl mx-auto px-4 py-10">
-        <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-6">
+    <nav class="bg-indigo-950 p-6 shadow-xl text-white">
+        <div class="container mx-auto flex justify-between items-center">
             <div>
-                <h1 class="text-4xl font-extrabold text-slate-900 tracking-tight">Performance Overview</h1>
-                <p class="text-slate-500 mt-2 font-medium text-lg">Search Console Data Analytics</p>
+                <h1 class="text-2xl font-black tracking-tighter italic">İGA ASO PERFORMANCE</h1>
+                <p class="text-xs text-indigo-300 uppercase font-bold tracking-widest">Region: Turkey 🇹🇷 | App Store Data</p>
             </div>
+            <div class="flex items-center space-x-4 text-sm">
+                <span class="bg-indigo-800 px-3 py-1 rounded-full border border-indigo-700 font-mono italic text-indigo-200">v2.6.1 Live</span>
+                <span class="bg-emerald-500 text-emerald-950 px-4 py-1 rounded-full font-bold shadow-lg shadow-emerald-500/20 underline">ORGANIC SYNCED</span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mx-auto py-10 px-6">
+        
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-indigo-400 transition-all group">
+                <p class="text-slate-400 text-xs font-bold uppercase tracking-widest mb-1">Visibility Score</p>
+                <div class="flex items-end space-x-2">
+                    <h2 class="text-4xl font-black text-slate-800 leading-none">77.33</h2>
+                    <span class="text-emerald-500 text-sm font-bold mb-1"><i class="fas fa-caret-up"></i> +12%</span>
+                </div>
+                <div class="h-1 bg-slate-100 mt-4 rounded-full overflow-hidden">
+                    <div class="h-full bg-indigo-500 w-[77%]"></div>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-emerald-400 transition-all">
+                <p class="text-slate-400 text-xs font-bold uppercase tracking-widest mb-1">Organic Downloads</p>
+                <div class="flex items-end space-x-2">
+                    <h2 class="text-4xl font-black text-slate-800 leading-none">135K</h2>
+                    <span class="text-slate-400 text-xs mb-1 italic">YTD (Jan-Nov)</span>
+                </div>
+                <p class="text-emerald-500 text-xs font-bold mt-3"><i class="fas fa-chart-line"></i> Efficiency up by 47.3%</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                <p class="text-slate-400 text-xs font-bold uppercase tracking-widest mb-1">Action Rate</p>
+                <div class="flex items-end space-x-2">
+                    <h2 class="text-4xl font-black text-slate-800 leading-none">31.66%</h2>
+                </div>
+                <p class="text-indigo-400 text-xs mt-3">Avg. Rating: 4.58 (2025)</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                <p class="text-slate-400 text-xs font-bold uppercase tracking-widest mb-1">Top 1 Ranking</p>
+                <div class="flex items-end space-x-2">
+                    <h2 class="text-4xl font-black text-slate-800 leading-none">29</h2>
+                    <span class="text-slate-400 text-xs mb-1 italic">Keywords</span>
+                </div>
+                <p class="text-indigo-400 text-xs mt-3">Total Tracked: 67</p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             
-            <div class="w-full md:w-72">
-                <label class="block text-sm font-bold text-slate-400 uppercase mb-2 ml-1">Otel Seçimi</label>
-                <select id="hotelSelector" onchange="renderData()" class="w-full p-4 bg-white border border-slate-200 rounded-2xl shadow-xl shadow-slate-200/50 focus:ring-2 focus:ring-blue-500 outline-none font-bold text-slate-700 cursor-pointer transition-all appearance-none">
-                    <option value="dmaris">D Maris Bay</option>
-                    <option value="argos">Argos in Cappadocia</option>
-                    <option value="dgocek">D-Resort Göcek</option>
-                    <option value="dayvalik">D-Resort Ayvalık</option>
-                </select>
+            <div class="lg:col-span-2 space-y-8">
+                <div class="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden">
+                    <div class="bg-slate-50 p-6 border-b border-slate-200 flex justify-between items-center">
+                        <h3 class="font-black text-slate-800 uppercase tracking-tighter">Organic Download History by Keyword</h3>
+                        <span class="bg-indigo-100 text-indigo-700 text-[10px] px-2 py-1 rounded font-bold uppercase tracking-widest">Apple Ads Integration</span>
+                    </div>
+                    <div class="p-0">
+                        <table class="w-full text-left text-sm">
+                            <thead class="bg-slate-50/50 text-slate-500 border-b border-slate-100">
+                                <tr>
+                                    <th class="p-5 font-bold uppercase text-[10px] tracking-widest">Keyword</th>
+                                    <th class="p-5 font-bold uppercase text-[10px] tracking-widest">Organic Downloads (%)</th>
+                                    <th class="p-5 font-bold uppercase text-[10px] tracking-widest text-center">Rank</th>
+                                    <th class="p-5 font-bold uppercase text-[10px] tracking-widest text-right">Volume</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100">
+                                <tr class="hover:bg-indigo-50/30 transition-colors">
+                                    <td class="p-5 font-black text-slate-700">havaist</td>
+                                    <td class="p-5">
+                                        <div class="flex items-center space-x-2">
+                                            <div class="w-24 bg-slate-100 h-1.5 rounded-full overflow-hidden">
+                                                <div class="h-full bg-indigo-500 w-[32.8%]"></div>
+                                            </div>
+                                            <span class="font-bold text-indigo-600">32.8%</span>
+                                        </div>
+                                    </td>
+                                    <td class="p-5 text-center"><span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full font-black">3</span></td>
+                                    <td class="p-5 text-right font-mono font-bold">49</td>
+                                </tr>
+                                <tr class="hover:bg-indigo-50/30">
+                                    <td class="p-5 font-black text-slate-700">istanbul airport</td>
+                                    <td class="p-5">
+                                        <div class="flex items-center space-x-2">
+                                            <div class="w-24 bg-slate-100 h-1.5 rounded-full overflow-hidden">
+                                                <div class="h-full bg-emerald-500 w-[5.24%]"></div>
+                                            </div>
+                                            <span class="font-bold text-emerald-600">5.24%</span>
+                                        </div>
+                                    </td>
+                                    <td class="p-5 text-center"><span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full font-black">1</span></td>
+                                    <td class="p-5 text-right font-mono font-bold">55</td>
+                                </tr>
+                                <tr class="hover:bg-indigo-50/30">
+                                    <td class="p-5 font-black text-slate-700">airport</td>
+                                    <td class="p-5">
+                                        <div class="flex items-center space-x-2">
+                                            <div class="w-24 bg-slate-100 h-1.5 rounded-full overflow-hidden">
+                                                <div class="h-full bg-blue-500 w-[14.39%]"></div>
+                                            </div>
+                                            <span class="font-bold text-blue-600">14.39%</span>
+                                        </div>
+                                    </td>
+                                    <td class="p-5 text-center"><span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full font-black">3</span></td>
+                                    <td class="p-5 text-right font-mono font-bold">40</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
+
+            <div class="space-y-8">
+                <div class="bg-indigo-900 rounded-3xl p-8 text-white shadow-xl shadow-indigo-900/20">
+                    <h4 class="text-sm font-bold uppercase tracking-widest text-indigo-300 mb-6 underline decoration-emerald-500 underline-offset-8">Critical Insights</h4>
+                    <ul class="space-y-6">
+                        <li class="flex items-start space-x-4">
+                            <div class="bg-emerald-500/20 p-2 rounded-lg text-emerald-400"><i class="fas fa-star"></i></div>
+                            <p class="text-sm leading-relaxed"><strong>Nov 2025 Rating Spike:</strong> Avg. rating reached <span class="text-emerald-400 font-black italic underline">5.00</span> with 3 reviews, overcoming 2024's low performance.</p>
+                        </li>
+                        <li class="flex items-start space-x-4">
+                            <div class="bg-amber-500/20 p-2 rounded-lg text-amber-400"><i class="fas fa-bolt"></i></div>
+                            <p class="text-sm leading-relaxed"><strong>Conversion Master:</strong> Action Rate jumped from 25.23% to <span class="text-amber-400 font-bold italic">37.17%</span> in Nov-25.</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-white rounded-3xl p-8 border border-slate-200">
+                    <h4 class="font-black text-slate-800 uppercase text-xs tracking-widest mb-6">Metadata Audit</h4>
+                    <div class="space-y-4">
+                        <div class="p-4 bg-slate-50 rounded-xl">
+                            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">App Title (16/30)</p>
+                            <p class="text-sm font-black text-slate-700 mt-1">İstanbul Airport</p>
+                        </div>
+                        <div class="p-4 bg-slate-50 rounded-xl">
+                            <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Short Description (80/80)</p>
+                            <p class="text-xs font-medium text-slate-600 mt-1 leading-relaxed italic underline italic">İGA İstanbul Airport: Uçuş bilgileri ve havalimanı hizmetlerine erişim sağlayın.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            <div class="stat-card bg-white p-8 rounded-3xl shadow-sm border border-slate-100">
-                <p class="text-xs font-black text-blue-500 uppercase tracking-widest">Tıklama</p>
-                <h3 id="totalClicks" class="text-3xl font-extrabold mt-3">-</h3>
-            </div>
-            <div class="stat-card bg-white p-8 rounded-3xl shadow-sm border border-slate-100">
-                <p class="text-xs font-black text-indigo-500 uppercase tracking-widest">Gösterim</p>
-                <h3 id="totalImps" class="text-3xl font-extrabold mt-3 text-slate-800">-</h3>
-            </div>
-            <div class="stat-card bg-white p-8 rounded-3xl shadow-sm border border-slate-100">
-                <p class="text-xs font-black text-emerald-500 uppercase tracking-widest">Ort. CTR</p>
-                <h3 id="avgCTR" class="text-3xl font-extrabold mt-3 text-emerald-600">-</h3>
-            </div>
-            <div class="stat-card bg-white p-8 rounded-3xl shadow-sm border border-slate-100">
-                <p class="text-xs font-black text-orange-500 uppercase tracking-widest">Ort. Pozisyon</p>
-                <h3 id="avgPos" class="text-3xl font-extrabold mt-3 text-orange-500">-</h3>
-            </div>
-        </div>
+        <footer class="mt-20 text-center border-t border-slate-200 pt-10">
+            <p class="text-slate-400 text-[10px] uppercase font-bold tracking-[0.3em]">© 2026 İGA DIGITAL - ASO DATA WAREHOUSE</p>
+        </footer>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-            <div class="bg-white p-8 rounded-[2.5rem] shadow-sm border border-slate-100">
-                <h3 class="text-xl font-extrabold mb-8 text-slate-800">Traffic Trend</h3>
-                <canvas id="trafficChart" height="280"></canvas>
-            </div>
-            <div class="bg-white p-8 rounded-[2.5rem] shadow-sm border border-slate-100">
-                <h3 class="text-xl font-extrabold mb-8 text-slate-800">CTR Performansı (%)</h3>
-                <canvas id="ctrChart" height="280"></canvas>
-            </div>
-        </div>
-
-        <div class="bg-white rounded-[2.5rem] shadow-sm border border-slate-100 overflow-hidden">
-            <div class="p-8 border-b border-slate-50 bg-slate-50/30">
-                <h3 class="text-xl font-extrabold text-slate-800">Aylık Detaylı Tablo</h3>
-            </div>
-            <div class="overflow-x-auto">
-                <table class="w-full text-left">
-                    <thead>
-                        <tr class="text-slate-400 text-xs font-black uppercase tracking-widest bg-slate-50/50">
-                            <th class="p-6">Dönem</th>
-                            <th class="p-6">Tıklama</th>
-                            <th class="p-6">Gösterim</th>
-                            <th class="p-6">CTR (%)</th>
-                            <th class="p-6">Pozisyon</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tableBody" class="divide-y divide-slate-100 font-semibold text-slate-600">
-                        </tbody>
-                </table>
-            </div>
-        </div>
     </div>
-
-    <script>
-        const hotelData = {
-            dmaris: {
-                labels: ['Eylül 24', 'Ekim 24', 'Kasım 24', 'Aralık 24', 'Ocak 25', 'Şubat 25', 'Mart 25', 'Nisan 25', 'Mayıs 25', 'Haziran 25', 'Temmuz 25', 'Ağustos 25', 'Eylül 25', 'Ekim 25', 'Kasım 25', 'Aralık 25'],
-                clicks: [9005, 5585, 2600, 2542, 4492, 4756, 6549, 7454, 11351, 14475, 15103, 14561, 10383, 4646, 2572, 1346],
-                imps: [194184, 163849, 130145, 116778, 117188, 101693, 133844, 160081, 360531, 425405, 303790, 278538, 226123, 83303, 75005, 37326],
-                ctr: [4.6, 3.4, 2.0, 2.2, 3.8, 4.7, 4.9, 4.7, 3.1, 3.4, 5.0, 5.2, 4.6, 5.6, 3.4, 3.6],
-                pos: [17.3, 26.0, 31.1, 29.6, 19.0, 16.6, 15.8, 14.8, 30.0, 28.5, 9.3, 9.6, 7.1, 6.8, 8.8, 10.4]
-            },
-            argos: {
-                labels: ['Eylül 24', 'Ekim 24', 'Kasım 24', 'Aralık 24', 'Ocak 25', 'Şubat 25', 'Mart 25', 'Nisan 25', 'Mayıs 25', 'Haziran 25', 'Temmuz 25', 'Ağustos 25', 'Eylül 25', 'Ekim 25', 'Kasım 25', 'Aralık 25'],
-                clicks: [14000, 7400, 5800, 6000, 7200, 6700, 7100, 6400, 6300, 5200, 5600, 5900, 5800, 6000, 4900, 2800],
-                imps: [160100, 133700, 120400, 117500, 129800, 123400, 148400, 181000, 168500, 114900, 126200, 172100, 144000, 130400, 140400, 236800],
-                ctr: [8.7, 5.6, 4.8, 5.1, 5.5, 5.4, 4.8, 3.6, 3.7, 4.5, 4.4, 3.4, 4.0, 4.6, 3.5, 1.2],
-                pos: [15.0, 16.1, 17.7, 17.1, 13.8, 14.6, 13.7, 26.4, 22.2, 15.5, 14.1, 11.4, 9.5, 7.1, 7.1, 7.5]
-            },
-            dgocek: {
-                labels: ['Eylül 24', 'Ekim 24', 'Kasım 24', 'Aralık 24', 'Ocak 25', 'Şubat 25', 'Mart 25', 'Nisan 25', 'Mayıs 25', 'Haziran 25', 'Temmuz 25', 'Ağustos 25', 'Eylül 25', 'Ekim 25', 'Kasım 25', 'Aralık 25'],
-                clicks: [2559, 1826, 1011, 877, 1252, 1084, 2369, 2664, 3942, 5516, 6777, 5748, 3188, 1738, 849, 697],
-                imps: [65389, 51326, 34787, 31820, 32203, 31910, 56403, 66609, 94191, 137009, 172086, 170514, 93488, 45183, 43213, 27692],
-                ctr: [3.9, 3.5, 2.9, 2.7, 3.8, 3.4, 4.2, 4.0, 4.1, 4.0, 3.9, 3.3, 3.4, 3.8, 1.9, 2.5],
-                pos: [11.8, 16.9, 20.8, 20.1, 15.5, 15.6, 10.9, 9.4, 9.1, 7.9, 6.9, 7.9, 7.9, 6.4, 7.4, 10.3]
-            },
-            dayvalik: {
-                labels: ['Eylül 24', 'Ekim 24', 'Kasım 24', 'Aralık 24', 'Ocak 25', 'Şubat 25', 'Mart 25', 'Nisan 25', 'Mayıs 25', 'Haziran 25', 'Temmuz 25', 'Ağustos 25', 'Eylül 25', 'Ekim 25', 'Kasım 25', 'Aralık 25'],
-                clicks: [2285, 1023, 459, 572, 1044, 930, 1559, 1734, 3909, 6237, 8182, 6107, 2054, 924, 499, 471],
-                imps: [37901, 22266, 15138, 18312, 19551, 19769, 29108, 32973, 72720, 106366, 140213, 137980, 61731, 21017, 18484, 10910],
-                ctr: [6.0, 4.6, 3.0, 3.1, 5.3, 4.7, 5.4, 5.3, 5.4, 5.9, 5.8, 4.4, 3.3, 4.4, 2.7, 4.3],
-                pos: [8.7, 18.6, 26.8, 25.2, 14.9, 13.6, 12.4, 11.9, 7.7, 7.1, 6.7, 9.9, 7.8, 5.7, 9.4, 12.1]
-            }
-        };
-
-        let tChart, cChart;
-
-        function renderData() {
-            const key = document.getElementById('hotelSelector').value;
-            const data = hotelData[key];
-
-            // Update Metrics
-            document.getElementById('totalClicks').innerText = data.clicks.reduce((a, b) => a + b, 0).toLocaleString();
-            document.getElementById('totalImps').innerText = data.imps.reduce((a, b) => a + b, 0).toLocaleString();
-            document.getElementById('avgCTR').innerText = '%' + (data.ctr.reduce((a, b) => a + b, 0) / data.ctr.length).toFixed(2);
-            document.getElementById('avgPos').innerText = (data.pos.reduce((a, b) => a + b, 0) / data.pos.length).toFixed(1);
-
-            // Update Table
-            const tbody = document.getElementById('tableBody');
-            tbody.innerHTML = '';
-            data.labels.forEach((label, i) => {
-                tbody.innerHTML += `
-                    <tr class="hover:bg-slate-50 transition-colors">
-                        <td class="p-6 text-slate-900 font-bold">${label}</td>
-                        <td class="p-6 text-blue-600 font-bold">${data.clicks[i].toLocaleString()}</td>
-                        <td class="p-6">${data.imps[i].toLocaleString()}</td>
-                        <td class="p-6 text-emerald-600 font-bold">%${data.ctr[i]}</td>
-                        <td class="p-6 text-orange-500 font-bold">${data.pos[i]}</td>
-                    </tr>
-                `;
-            });
-
-            // Refresh Charts
-            if (tChart) tChart.destroy();
-            if (cChart) cChart.destroy();
-
-            tChart = new Chart(document.getElementById('trafficChart'), {
-                type: 'line',
-                data: {
-                    labels: data.labels,
-                    datasets: [
-                        { label: 'Tıklama', data: data.clicks, borderColor: '#3b82f6', backgroundColor: 'rgba(59, 130, 246, 0.1)', fill: true, tension: 0.4, yAxisID: 'y' },
-                        { label: 'Gösterim', data: data.imps, borderColor: '#94a3b8', borderDash: [5, 5], tension: 0.4, yAxisID: 'y1' }
-                    ]
-                },
-                options: { responsive: true, plugins: { legend: { position: 'bottom' } }, scales: { y: { position: 'left' }, y1: { position: 'right', grid: { display: false } } } }
-            });
-
-            cChart = new Chart(document.getElementById('ctrChart'), {
-                type: 'bar',
-                data: {
-                    labels: data.labels,
-                    datasets: [{ label: 'CTR %', data: data.ctr, backgroundColor: '#10b981', borderRadius: 12 }]
-                },
-                options: { responsive: true, plugins: { legend: { display: false } } }
-            });
-        }
-
-        window.onload = renderData;
-    </script>
 </body>
 </html>
